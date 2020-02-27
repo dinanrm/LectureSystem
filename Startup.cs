@@ -26,7 +26,7 @@ namespace LectureSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            services.AddControllers();
             services.AddDbContext<LectureSystemDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Localhost")));
         }
@@ -55,6 +55,7 @@ namespace LectureSystem
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
