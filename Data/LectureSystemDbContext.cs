@@ -31,14 +31,6 @@ namespace LectureSystem.Data
         public virtual DbSet<Takes> Takes { get; set; }
         public virtual DbSet<Teaches> Teaches { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("Name=Localhost");
-        //    }
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Attendances>(entity =>

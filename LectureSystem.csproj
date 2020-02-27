@@ -5,6 +5,10 @@
     <UserSecretsId>f7640605-0411-443b-87b1-79f97374b25c</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Migrations\20200227024002_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200227024002_InitialCreate.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

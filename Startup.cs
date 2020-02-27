@@ -15,8 +15,6 @@ namespace LectureSystem
 {
     public class Startup
     {
-        private string _ApiKey = null;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,9 +26,9 @@ namespace LectureSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            _ApiKey = Configuration["Localhost"];
+
             services.AddDbContext<LectureSystemDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(_ApiKey)));
+                options.UseSqlServer(Configuration.GetConnectionString("Localhost")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
