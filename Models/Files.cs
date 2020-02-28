@@ -5,6 +5,11 @@ namespace LectureSystem.Models
 {
     public partial class Files
     {
+        public Files()
+        {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
         public int FileId { get; set; }
         public int CourseId { get; set; }
         public string Name { get; set; }

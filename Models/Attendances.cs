@@ -5,6 +5,11 @@ namespace LectureSystem.Models
 {
     public partial class Attendances
     {
+        public Attendances()
+        {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
         public int AttendId { get; set; }
         public int ClassScheduleId { get; set; }
         public int LecturerId { get; set; }

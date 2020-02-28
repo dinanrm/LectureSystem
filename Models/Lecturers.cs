@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace LectureSystem.Models
 {
@@ -10,6 +11,8 @@ namespace LectureSystem.Models
             Attendances = new HashSet<Attendances>();
             Fields = new HashSet<Fields>();
             Teaches = new HashSet<Teaches>();
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
         }
 
         public int LecturerId { get; set; }
@@ -25,8 +28,11 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Attendances> Attendances { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Fields> Fields { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Teaches> Teaches { get; set; }
     }
 }

@@ -5,6 +5,11 @@ namespace LectureSystem.Models
 {
     public partial class Teaches
     {
+        public Teaches()
+        {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
         public int TeachId { get; set; }
         public int ClassScheduleId { get; set; }
         public int LecturerId { get; set; }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace LectureSystem.Models
 {
@@ -10,12 +12,14 @@ namespace LectureSystem.Models
             Attendances = new HashSet<Attendances>();
             FinalScores = new HashSet<FinalScores>();
             Takes = new HashSet<Takes>();
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
         }
 
         public int StudentId { get; set; }
-        public string Uuid { get; set; }
+        public string UUID { get; set; }
         public string Name { get; set; }
-        public string ProfilePicture { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? Birthdate { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
@@ -26,8 +30,11 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Attendances> Attendances { get; set; }
+        [JsonIgnore]
         public virtual ICollection<FinalScores> FinalScores { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Takes> Takes { get; set; }
     }
 }

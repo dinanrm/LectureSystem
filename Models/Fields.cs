@@ -5,6 +5,11 @@ namespace LectureSystem.Models
 {
     public partial class Fields
     {
+        public Fields()
+        {
+            CreatedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
         public int FieldId { get; set; }
         public int CourseId { get; set; }
         public int LecturerId { get; set; }
