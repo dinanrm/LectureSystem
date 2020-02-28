@@ -43,8 +43,6 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/FinalScores/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFinalScores(int id, FinalScores finalScores)
         {
@@ -75,8 +73,6 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/FinalScores
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<FinalScores>> PostFinalScores(FinalScores finalScores)
         {

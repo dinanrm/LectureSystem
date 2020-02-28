@@ -43,8 +43,6 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/Lecturers/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLecturers(int id, Lecturers lecturers)
         {
@@ -75,8 +73,6 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/Lecturers
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Lecturers>> PostLecturers(Lecturers lecturers)
         {
