@@ -240,6 +240,10 @@ namespace LectureSystem.Data
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
+                entity.Property(e => e.GradePoint).HasColumnType("float");
+
+                entity.Property(e => e.GradePointAverage).HasColumnType("float");
+
                 entity.HasOne(d => d.Semester)
                     .WithMany(p => p.FinalScores)
                     .HasForeignKey(d => d.SemesterId)
@@ -348,11 +352,9 @@ namespace LectureSystem.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ProfilePicture).HasColumnType("text");
-
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Uuid)
+                entity.Property(e => e.UUID)
                     .HasColumnName("UUID")
                     .HasMaxLength(50)
                     .IsUnicode(false);
