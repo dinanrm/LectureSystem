@@ -23,15 +23,15 @@ namespace LectureSystem.Controllers
 
         // GET: api/Takes
         /// <summary>
-        /// Get all classrooms
+        /// Get all takes
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Get /api/classrooms
+        ///     Get /api/takes
         ///
         /// </remarks>
-        /// <response code="200">Returns all of classroom entity.</response>
+        /// <response code="200">Returns all of take entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Takes>>> GetTakes()
         {
@@ -40,17 +40,17 @@ namespace LectureSystem.Controllers
 
         // GET: api/Takes/5
         /// <summary>
-        /// Get a classroom by id
+        /// Get a take by id
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Get /api/classrooms/1
+        ///     Get /api/takes/1
         ///
         /// </remarks>
-        /// <param name="id">A classroom id</param>
-        /// <response code="200">Returns a classroom entity.</response>
-        /// <response code="404">If the id of classroom entity is not exist</response>
+        /// <param name="id">A take id</param>
+        /// <response code="200">Returns a take entity.</response>
+        /// <response code="404">If the id of take entity is not exist</response>
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
@@ -68,19 +68,19 @@ namespace LectureSystem.Controllers
 
         // PUT: api/Takes/5
         /// <summary>
-        /// Update a classroom by id
+        /// Update a take by id
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Put /api/classrooms/1
+        ///     Put /api/takes/1
         ///
         /// </remarks>
-        /// <param name="id">A classroom id</param>
-        /// <param name="classrooms">A classroom entity</param>
-        /// <response code="204">Returns updated classroom entity.</response>
+        /// <param name="id">A take id</param>
+        /// <param name="takes">A take entity</param>
+        /// <response code="204">Returns updated take entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
-        /// <response code="404">If the id of classroom entity is not exist</response>
+        /// <response code="404">If the id of take entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -115,16 +115,16 @@ namespace LectureSystem.Controllers
 
         // POST: api/Takes
         /// <summary>
-        /// Add a new classroom
+        /// Add a new take
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Post /api/classrooms
+        ///     Post /api/takes
         ///
         /// </remarks>
-        /// <param name="classrooms">A classroom entity</param>
-        /// <response code="201">Returns the created classroom entity.</response>
+        /// <param name="takes">A take entity</param>
+        /// <response code="201">Returns the created take entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -139,17 +139,17 @@ namespace LectureSystem.Controllers
 
         // DELETE: api/Takes/5
         /// <summary>
-        /// Delete a classroom by id
+        /// Delete a take by id
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     Delete /api/classrooms/1
+        ///     Delete /api/takes/1
         ///
         /// </remarks>
-        /// <param name="id">A classroom id</param>
-        /// <response code="200">Returns deleted classroom entity.</response>
-        /// <response code="404">If the id of classroom entity is not exist</response>
+        /// <param name="id">A take id</param>
+        /// <response code="200">Returns deleted take entity.</response>
+        /// <response code="404">If the id of take entity is not exist</response>
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
