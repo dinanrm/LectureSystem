@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/ClassSchedules
+        /// <summary>
+        /// Get all classSchedules
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/classSchedules
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of classSchedule entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ClassSchedules>>> GetClassSchedules()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/ClassSchedules/5
+        /// <summary>
+        /// Get a classSchedule by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/classSchedules/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classSchedule id</param>
+        /// <response code="200">Returns a classSchedule entity.</response>
+        /// <response code="404">If the id of classSchedule entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<ClassSchedules>> GetClassSchedules(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/ClassSchedules/5
+        /// <summary>
+        /// Update a classSchedule by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/classSchedules/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classSchedule id</param>
+        /// <param name="classSchedules">A classSchedule entity</param>
+        /// <response code="204">Returns updated classSchedule entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of classSchedule entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutClassSchedules(int id, ClassSchedules classSchedules)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/ClassSchedules
+        /// <summary>
+        /// Add a new classSchedule
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/classSchedules
+        ///
+        /// </remarks>
+        /// <param name="classSchedules">A classSchedule entity</param>
+        /// <response code="201">Returns the created classSchedule entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<ClassSchedules>> PostClassSchedules(ClassSchedules classSchedules)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/ClassSchedules/5
+        /// <summary>
+        /// Delete a classSchedule by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/classSchedules/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classSchedule id</param>
+        /// <response code="200">Returns deleted classSchedule entity.</response>
+        /// <response code="404">If the id of classSchedule entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<ClassSchedules>> DeleteClassSchedules(int id)
         {

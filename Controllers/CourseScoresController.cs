@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/CourseScores
+        /// <summary>
+        /// Get all courseScores
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/courseScores
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of courseScore entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourseScores>>> GetCourseScores()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/CourseScores/5
+        /// <summary>
+        /// Get a courseScore by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/courseScores/1
+        ///
+        /// </remarks>
+        /// <param name="id">A courseScore id</param>
+        /// <response code="200">Returns a courseScore entity.</response>
+        /// <response code="404">If the id of courseScore entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<CourseScores>> GetCourseScores(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/CourseScores/5
+        /// <summary>
+        /// Update a courseScore by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/courseScores/1
+        ///
+        /// </remarks>
+        /// <param name="id">A courseScore id</param>
+        /// <param name="courseScores">A courseScore entity</param>
+        /// <response code="204">Returns updated courseScore entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of courseScore entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCourseScores(int id, CourseScores courseScores)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/CourseScores
+        /// <summary>
+        /// Add a new courseScore
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/courseScores
+        ///
+        /// </remarks>
+        /// <param name="courseScores">A courseScore entity</param>
+        /// <response code="201">Returns the created courseScore entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<CourseScores>> PostCourseScores(CourseScores courseScores)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/CourseScores/5
+        /// <summary>
+        /// Delete a courseScore by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/courseScores/1
+        ///
+        /// </remarks>
+        /// <param name="id">A courseScore id</param>
+        /// <response code="200">Returns deleted courseScore entity.</response>
+        /// <response code="404">If the id of courseScore entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<CourseScores>> DeleteCourseScores(int id)
         {

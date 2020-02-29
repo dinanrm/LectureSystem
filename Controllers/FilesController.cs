@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Files
+        /// <summary>
+        /// Get all files
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/files
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of file entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Files>>> GetFiles()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Files/5
+        /// <summary>
+        /// Get a file by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/files/1
+        ///
+        /// </remarks>
+        /// <param name="id">A file id</param>
+        /// <response code="200">Returns a file entity.</response>
+        /// <response code="404">If the id of file entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Files>> GetFiles(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/Files/5
+        /// <summary>
+        /// Update a file by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/files/1
+        ///
+        /// </remarks>
+        /// <param name="id">A file id</param>
+        /// <param name="files">A file entity</param>
+        /// <response code="204">Returns updated file entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of file entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFiles(int id, Files files)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/Files
+        /// <summary>
+        /// Add a new file
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/files
+        ///
+        /// </remarks>
+        /// <param name="files">A file entity</param>
+        /// <response code="201">Returns the created file entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<Files>> PostFiles(Files files)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/Files/5
+        /// <summary>
+        /// Delete a file by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/files/1
+        ///
+        /// </remarks>
+        /// <param name="id">A file id</param>
+        /// <response code="200">Returns deleted file entity.</response>
+        /// <response code="404">If the id of file entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Files>> DeleteFiles(int id)
         {

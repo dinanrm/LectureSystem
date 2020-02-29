@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Semesters
+        /// <summary>
+        /// Get all semesters
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/semesters
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of semester entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Semesters>>> GetSemesters()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Semesters/5
+        /// <summary>
+        /// Get a semester by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/semesters/1
+        ///
+        /// </remarks>
+        /// <param name="id">A semester id</param>
+        /// <response code="200">Returns a semester entity.</response>
+        /// <response code="404">If the id of semester entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Semesters>> GetSemesters(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/Semesters/5
+        /// <summary>
+        /// Update a semester by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/semesters/1
+        ///
+        /// </remarks>
+        /// <param name="id">A semester id</param>
+        /// <param name="semesters">A semester entity</param>
+        /// <response code="204">Returns updated semester entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of semester entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSemesters(int id, Semesters semesters)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/Semesters
+        /// <summary>
+        /// Add a new semester
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/semesters
+        ///
+        /// </remarks>
+        /// <param name="semesters">A semester entity</param>
+        /// <response code="201">Returns the created semester entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<Semesters>> PostSemesters(Semesters semesters)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/Semesters/5
+        /// <summary>
+        /// Delete a semester by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/semesters/1
+        ///
+        /// </remarks>
+        /// <param name="id">A semester id</param>
+        /// <response code="200">Returns deleted semester entity.</response>
+        /// <response code="404">If the id of semester entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Semesters>> DeleteSemesters(int id)
         {

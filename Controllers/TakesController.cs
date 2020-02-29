@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Takes
+        /// <summary>
+        /// Get all classrooms
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/classrooms
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of classroom entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Takes>>> GetTakes()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Takes/5
+        /// <summary>
+        /// Get a classroom by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/classrooms/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classroom id</param>
+        /// <response code="200">Returns a classroom entity.</response>
+        /// <response code="404">If the id of classroom entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Takes>> GetTakes(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/Takes/5
+        /// <summary>
+        /// Update a classroom by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/classrooms/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classroom id</param>
+        /// <param name="classrooms">A classroom entity</param>
+        /// <response code="204">Returns updated classroom entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of classroom entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTakes(int id, Takes takes)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/Takes
+        /// <summary>
+        /// Add a new classroom
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/classrooms
+        ///
+        /// </remarks>
+        /// <param name="classrooms">A classroom entity</param>
+        /// <response code="201">Returns the created classroom entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<Takes>> PostTakes(Takes takes)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/Takes/5
+        /// <summary>
+        /// Delete a classroom by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/classrooms/1
+        ///
+        /// </remarks>
+        /// <param name="id">A classroom id</param>
+        /// <response code="200">Returns deleted classroom entity.</response>
+        /// <response code="404">If the id of classroom entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Takes>> DeleteTakes(int id)
         {

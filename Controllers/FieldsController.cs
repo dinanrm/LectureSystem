@@ -22,6 +22,16 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Fields
+        /// <summary>
+        /// Get all fields
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/fields
+        ///
+        /// </remarks>
+        /// <response code="200">Returns all of field entity.</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Fields>>> GetFields()
         {
@@ -29,6 +39,20 @@ namespace LectureSystem.Controllers
         }
 
         // GET: api/Fields/5
+        /// <summary>
+        /// Get a field by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Get /api/fields/1
+        ///
+        /// </remarks>
+        /// <param name="id">A field id</param>
+        /// <response code="200">Returns a field entity.</response>
+        /// <response code="404">If the id of field entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Fields>> GetFields(int id)
         {
@@ -43,6 +67,23 @@ namespace LectureSystem.Controllers
         }
 
         // PUT: api/Fields/5
+        /// <summary>
+        /// Update a field by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Put /api/fields/1
+        ///
+        /// </remarks>
+        /// <param name="id">A field id</param>
+        /// <param name="fields">A field entity</param>
+        /// <response code="204">Returns updated field entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="404">If the id of field entity is not exist</response>
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFields(int id, Fields fields)
         {
@@ -73,6 +114,20 @@ namespace LectureSystem.Controllers
         }
 
         // POST: api/Fields
+        /// <summary>
+        /// Add a new field
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/fields
+        ///
+        /// </remarks>
+        /// <param name="fields">A field entity</param>
+        /// <response code="201">Returns the created field entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<Fields>> PostFields(Fields fields)
         {
@@ -83,6 +138,20 @@ namespace LectureSystem.Controllers
         }
 
         // DELETE: api/Fields/5
+        /// <summary>
+        /// Delete a field by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Delete /api/fields/1
+        ///
+        /// </remarks>
+        /// <param name="id">A field id</param>
+        /// <response code="200">Returns deleted field entity.</response>
+        /// <response code="404">If the id of field entity is not exist</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Fields>> DeleteFields(int id)
         {

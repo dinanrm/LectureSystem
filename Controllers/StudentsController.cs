@@ -79,7 +79,7 @@ namespace LectureSystem.Controllers
         /// <param name="id">A student id</param>
         /// <param name="students">A student entity</param>
         /// <response code="204">Returns updated student entity.</response>
-        /// <response code="400">If the id of student entity in the query and json request is different.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
         /// <response code="404">If the id of student entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -125,7 +125,9 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="students">A student entity</param>
         /// <response code="201">Returns the created student entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
         [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         [HttpPost]
         public async Task<ActionResult<Students>> PostStudents(Students students)
         {
