@@ -36,13 +36,12 @@ namespace LectureSystem
                 {
                     Title = "Lecture System API",
                     Version = "v1",
-                    Description = "Teaching and learning activities in lectures",
-                    //TermsOfService = "None",
+                    Description = "Teaching and learning activities in lectures.",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
                     {
                         Name = "Dinan Rangga Maulana",
                         Email = "dinanranggamaulana@gmail.com",
-                        Url = new Uri("https://github.com/dinanrm"),
+                        Url = new Uri("https://github.com/dinanrm/LectureSystem"),
                     }
                 });
 

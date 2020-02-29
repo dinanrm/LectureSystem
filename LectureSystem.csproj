@@ -9,6 +9,11 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200227024002_InitialCreate.cs" />
     <Compile Remove="Migrations\20200227024002_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200229105833_ModifyFiles-AddFilePath.cs" />
+    <Compile Remove="Migrations\20200229105833_ModifyFiles-AddFilePath.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\files\.gitignore" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
@@ -27,5 +32,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.Core" Version="5.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Lecturers\" />
+    <Folder Include="Pages\Courses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\files\.gitignore" />
   </ItemGroup>
 </Project>
