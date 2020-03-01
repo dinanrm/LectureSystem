@@ -12,6 +12,9 @@ namespace LectureSystem.Models
             Attendances = new HashSet<Attendances>();
             FinalScores = new HashSet<FinalScores>();
             Takes = new HashSet<Takes>();
+
+            UUID = Guid.NewGuid().ToString();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

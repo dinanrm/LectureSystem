@@ -36,12 +36,13 @@ namespace LectureSystem
                 {
                     Title = "Lecture System API",
                     Version = "v1",
-                    Description = "Teaching and learning activities in lectures.",
+                    Description = "Backend application created to manage lecture activities virtually. " +
+                    "Created using ASP .NET Core Web API + Razor Page, the database uses SQL Server hosted on Azure.",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
                     {
                         Name = "Dinan Rangga Maulana",
                         Email = "dinanranggamaulana@gmail.com",
-                        Url = new Uri("https://github.com/dinanrm/LectureSystem"),
+                        Url = new Uri("https://github.com/dinanrm/LectureSystem/tree/develop"),
                     }
                 });
 
@@ -53,7 +54,7 @@ namespace LectureSystem
             services.AddRazorPages();
             services.AddControllers();
             services.AddDbContext<LectureSystemDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Localhost")));
+                options.UseSqlServer(Configuration.GetConnectionString("Azure")));
             
         }
 
@@ -78,7 +79,7 @@ namespace LectureSystem
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lecture System Virtual API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lecture System API V1");
                 c.RoutePrefix = string.Empty;
             });
 
