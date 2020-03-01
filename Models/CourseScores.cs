@@ -7,12 +7,14 @@ namespace LectureSystem.Models
     {
         public CourseScores()
         {
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
         public int CourseScoreId { get; set; }
         public int? TakeId { get; set; }
         public int? ScoreId { get; set; }
+        public bool? Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 

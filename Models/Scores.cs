@@ -9,6 +9,7 @@ namespace LectureSystem.Models
         public Scores()
         {
             CourseScores = new HashSet<CourseScores>();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

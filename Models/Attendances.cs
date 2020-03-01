@@ -7,6 +7,7 @@ namespace LectureSystem.Models
     {
         public Attendances()
         {
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
@@ -16,6 +17,7 @@ namespace LectureSystem.Models
         public int StudentId { get; set; }
         public bool? IsAttend { get; set; }
         public string Reason { get; set; }
+        public bool? Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 

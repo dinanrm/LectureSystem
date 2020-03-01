@@ -10,6 +10,7 @@ namespace LectureSystem.Models
         {
             Attendances = new HashSet<Attendances>();
             Teaches = new HashSet<Teaches>();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

@@ -8,6 +8,7 @@ namespace LectureSystem.Models
     {
         public FinalScores()
         {
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

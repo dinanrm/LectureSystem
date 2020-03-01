@@ -12,6 +12,7 @@ namespace LectureSystem.Models
             Fields = new HashSet<Fields>();
             Files = new HashSet<Files>();
             Takes = new HashSet<Takes>();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

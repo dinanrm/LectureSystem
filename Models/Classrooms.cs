@@ -9,6 +9,7 @@ namespace LectureSystem.Models
         public Classrooms()
         {
             ClassSchedules = new HashSet<ClassSchedules>();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

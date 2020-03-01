@@ -7,6 +7,7 @@ namespace LectureSystem.Models
     {
         public Files()
         {
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }

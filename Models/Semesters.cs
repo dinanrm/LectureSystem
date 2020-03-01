@@ -10,6 +10,7 @@ namespace LectureSystem.Models
         {
             FinalScores = new HashSet<FinalScores>();
             Takes = new HashSet<Takes>();
+            Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
