@@ -9,75 +9,84 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-1) .NET Core 3.1
-```
+### 1) .NET Core 3.1
+
 .NET Core is a cross-platform version of .NET for building websites, services, and console apps. There are no fees or licensing costs, including for commercial use.
 You can install it by following the insctructions in this [page](https://dotnet.microsoft.com/download)
 
-```
-2) Microsoft Visual Studio
-```
+### 2) Microsoft Visual Studio
+
 Full-featured IDE to code, debug, test, and deploy to any platform.
 You can install it by following the insctructions in this [page](https://visualstudio.microsoft.com/vs/)
 
-```
-3) Microsoft Visual Studio Code
-```
+### 3) Microsoft Visual Studio Code
+
 Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux.
 You can install it by following the insctructions in this [page](https://code.visualstudio.com/download)
 
-```
-4) Microsoft SQL Server Management Studio (only windows, another OS in no 5)
-```
+### 4) Microsoft SQL Server Management Studio (only windows, another OS in no 5)
+
 SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure, and we used it to store and manage data. 
 You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
 
-```
-5) Azure Data Studio (alternative of no 4)
-```
+### 5) Azure Data Studio (alternative of no 4)
+
 Azure Data Studio is a cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux. 
 You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15)
 
-### Installing
+### Setup the project
 
-A step by step series of examples that tell you how to get a development env running
-
-```
-Give the example
-```
-
-And repeat
+1) Set connection string
+In ASP.NET Core the configuration system is very flexible, and the connection string could be stored in appsettings.json, an environment variable, the user secret store, or another configuration source. 
+The following example shows the connection string stored in `appsettings.json`.
 
 ```
-until finished
+{
+  "ConnectionStrings": {
+    "BloggingDatabase": "Server=(localdb)\\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;"
+  },
+}
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+2) Modify the values
+- Change `BloggingDatabase` with your database server information.
+- Also change the name in the `startup.cs` file.
 
 ```
-Give an example
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<BloggingContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
+}
 ```
 
-### And coding style tests
+## Run the app
+a. If you are using Visual Studio IDE, just press `Ctrl+F5` to run without the debugger.
+Visual Studio displays the following dialog:
 
-Explain what these tests test and why
+![alt text](https://docs.microsoft.com/en-us/aspnet/core/getting-started/_static/trustcert.png?view=aspnetcore-3.1)
 
+Select Yes if you trust the IIS Express SSL certificate.
+The following dialog is displayed:
+
+![alt text](https://docs.microsoft.com/en-us/aspnet/core/getting-started/_static/cert.png?view=aspnetcore-3.1)
+
+Select Yes if you agree to trust the development certificate.
+
+b. If you are not using Visual Studio IDE, first trust the HTTPS development certificate by running the following command:
 ```
-Give an example
+dotnet dev-certs https --trust
 ```
+The preceding command displays the following dialog:
+
+![alt text](https://docs.microsoft.com/en-us/aspnet/core/getting-started/_static/cert.png?view=aspnetcore-3.1)
+
+Select Yes if you agree to trust the development certificate.
+Press Ctrl-F5 to run without the debugger.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+You can deploy it by following the insctructions in this [page](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.1)
 
 ## Built With
 
