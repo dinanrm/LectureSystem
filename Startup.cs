@@ -54,7 +54,7 @@ namespace LectureSystem
             services.AddRazorPages();
             services.AddControllers();
             services.AddDbContext<LectureSystemDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Azure")));
+                options.UseSqlServer(Configuration.GetConnectionString("YourLocalDatabaseServer")));
             
         }
 
