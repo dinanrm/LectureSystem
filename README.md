@@ -10,8 +10,24 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+1) .NET Core 3.1
 ```
+.NET Core is a cross-platform version of .NET for building websites, services, and console apps. There are no fees or licensing costs, including for commercial use.
+
+```
+2) Microsoft Visual Studio
+```
+Full-featured IDE to code, debug, test, and deploy to any platform
+
+```
+3) Microsoft SQL Server Management Studio (only windows, another OS in no 4)
+```
+SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure, and we used it to store and manage data. You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+
+```
+4) Azure Data Studio (alternative of no 3)
+```
+Azure Data Studio is a cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux. You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15)
 
 ### Installing
 
@@ -67,20 +83,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## Documentation
+![alt text](https://raw.githubusercontent.com/dinanrm/LectureSystem/develop/ALE%20-%20Lecture%20System%2C%20v22.png)
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Dinan Rangga Maulana** - *Initial work* - [dinanrm](https://github.com/dinanrm)
