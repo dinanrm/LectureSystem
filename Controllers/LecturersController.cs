@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LectureSystem.Data;
 using LectureSystem.Models;
+using Microsoft.AspNetCore.Authentication;
 
 namespace LectureSystem.Controllers
 {
@@ -35,7 +36,16 @@ namespace LectureSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Lecturers>>> GetLecturers()
         {
-            return await _context.Lecturers.ToListAsync();
+            var lecturers = await _context.Lecturers
+                .Select(s => new {
+                    s.LecturerId,
+                    s.Name,
+                    s.Email,
+                    s.LastLogin,
+                })
+                .ToListAsync();
+
+            return Ok(lecturers);
         }
 
         // GET: api/Lecturers/5
@@ -56,14 +66,29 @@ namespace LectureSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Lecturers>> GetLecturers(int id)
         {
-            var lecturers = await _context.Lecturers.FindAsync(id);
+            var lecturer = await _context.Lecturers
+                .Where(x => x.LecturerId == id)
+                .Select(s => new
+                {
+                    s.LecturerId,
+                    s.Name,
+                    s.Birthdate,
+                    s.PhoneNumber,
+                    s.Address,
+                    s.Email,
+                    s.LastLogin,
+                    s.Status,
+                    s.CreatedDate,
+                    s.UpdatedDate
+                })
+                .FirstOrDefaultAsync();
 
-            if (lecturers == null)
+            if (lecturer == null)
             {
                 return NotFound();
             }
 
-            return lecturers;
+            return Ok(lecturer);
         }
 
         // PUT: api/Lecturers/5
@@ -92,7 +117,21 @@ namespace LectureSystem.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(lecturers).State = EntityState.Modified;
+            var result = await _context.Lecturers
+                .Where(l => l.Email == lecturers.Email)
+                .FirstOrDefaultAsync();
+
+            if (result != null)
+            {
+                return Conflict("Email has been used");
+            }
+
+            result.Name = lecturers.Name;
+            result.Birthdate = lecturers.Birthdate;
+            result.PhoneNumber = lecturers.PhoneNumber;
+            result.Address = lecturers.Address;
+            result.Email = lecturers.Email;
+            result.Password = EncryptPassword(lecturers.Password);
 
             try
             {
@@ -131,10 +170,95 @@ namespace LectureSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<Lecturers>> PostLecturers(Lecturers lecturers)
         {
+            var result = await _context.Lecturers
+                .Where(l => l.Email == lecturers.Email)
+                .FirstOrDefaultAsync();
+
+            if (result != null)
+            {
+                return Conflict("Email has been used");
+            }
+
+            lecturers.Password = EncryptPassword(lecturers.Password);
+
             _context.Lecturers.Add(lecturers);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetLecturers", new { id = lecturers.LecturerId }, lecturers);
+        }
+
+        // POST: api/lecturers/Login
+        /// <summary>
+        /// Login as a lecturer
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/lecturers/login
+        ///
+        /// </remarks>
+        /// <param name="lecturers">A lecturer entity</param>
+        /// <response code="201">Returns the created lecturer entity.</response>
+        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">Email or Password is incorrect</response>
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [HttpPost("Login")]
+        public async Task<ActionResult<Lecturers>> Login(Lecturers lecturers)
+        {
+            var result = await _context.Lecturers.FirstOrDefaultAsync(l => l.Email == lecturers.Email);
+
+            if (result == null)
+            {
+                return Unauthorized("The email or password is incorrect");
+            }
+
+            var validationStatus = VerifyPassword(lecturers.Password, result.Password);
+
+            if (!validationStatus)
+            {
+                return Unauthorized("The email or password is incorrect");
+            }
+
+            result.LastLogin = DateTime.Now;
+            result.Status = true;
+            await _context.SaveChangesAsync();
+
+            var filtered = new
+            {
+                result.LecturerId,
+                result.Name,
+                result.Birthdate,
+                result.PhoneNumber,
+                result.Address,
+                result.Email,
+                result.LastLogin,
+                result.Status,
+                result.CreatedDate,
+                result.UpdatedDate
+            };
+
+            return Ok(filtered);
+        }
+
+        // GET: api/lecturers/Logout
+        /// <summary>
+        /// Logout as a lecturer
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/lecturers/logout
+        ///
+        /// </remarks>
+        /// <param name="returnUrl">A url to redirect to</param>
+        [HttpGet("Logout")]
+        public async Task<IActionResult> Logout([FromQuery] string returnUrl)
+        {
+            await HttpContext.SignOutAsync();
+
+            return Redirect(returnUrl);
         }
 
         // DELETE: api/Lecturers/5
@@ -170,6 +294,16 @@ namespace LectureSystem.Controllers
         private bool LecturersExists(int id)
         {
             return _context.Lecturers.Any(e => e.LecturerId == id);
+        }
+
+        protected string EncryptPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        protected bool VerifyPassword(string enteredPassword, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
         }
     }
 }

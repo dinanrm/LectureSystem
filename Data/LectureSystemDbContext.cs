@@ -279,9 +279,7 @@ namespace LectureSystem.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Password).HasColumnType("text");
 
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(50)
@@ -346,9 +344,7 @@ namespace LectureSystem.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Password).HasColumnType("text");
 
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(50)
