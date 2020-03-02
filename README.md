@@ -21,6 +21,7 @@ You can install it by following the insctructions in this [page](https://dotnet.
 Full-featured IDE to code, debug, test, and deploy to any platform.
 You can install it by following the insctructions in this [page](https://visualstudio.microsoft.com/vs/)
 
+```
 3) Microsoft Visual Studio Code
 ```
 Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux.
