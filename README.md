@@ -13,27 +13,34 @@ What things you need to install the software and how to install them
 1) .NET Core 3.1
 ```
 .NET Core is a cross-platform version of .NET for building websites, services, and console apps. There are no fees or licensing costs, including for commercial use.
+You can install it by following the insctructions in this [page](https://dotnet.microsoft.com/download)
 
 ```
 2) Microsoft Visual Studio
 ```
-Full-featured IDE to code, debug, test, and deploy to any platform
+Full-featured IDE to code, debug, test, and deploy to any platform.
+You can install it by following the insctructions in this [page](https://visualstudio.microsoft.com/vs/)
+
+3) Microsoft Visual Studio Code
+```
+Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux.
+You can install it by following the insctructions in this [page](https://code.visualstudio.com/download)
 
 ```
-3) Microsoft SQL Server Management Studio (only windows, another OS in no 4)
+4) Microsoft SQL Server Management Studio (only windows, another OS in no 5)
 ```
-SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure, and we used it to store and manage data. You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure, and we used it to store and manage data. 
+You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
 
 ```
-4) Azure Data Studio (alternative of no 3)
+5) Azure Data Studio (alternative of no 4)
 ```
-Azure Data Studio is a cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux. You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15)
+Azure Data Studio is a cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux. 
+You can install it by following the insctructions in this [page](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15)
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
 
 ```
 Give the example
@@ -90,4 +97,5 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Dinan Rangga Maulana** - *Initial work* - [dinanrm](https://github.com/dinanrm)
+* **Dinan Rangga Maulana**
+[GitHub](https://github.com/dinanrm) | [GitLab](https://gitlab.com/dinanrm) | [LinkedIn](https://www.linkedin.com/in/dinanrm/) 
