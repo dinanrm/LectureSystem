@@ -90,9 +90,9 @@ You can deploy it by following the insctructions in this [page](https://docs.mic
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [ASP .Net Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1) - The web framework used
+* [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) - EF Core as an object-relational mapper (O/RM)
+* [Swagger](https://swagger.io/) - Used to generate API Documentation
 
 ## Contributing
 
