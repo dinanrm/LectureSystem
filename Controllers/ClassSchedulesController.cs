@@ -74,6 +74,14 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/classSchedules/1
+        ///     {
+        ///         "classScheduleId": 1,
+        ///         "courseId": 3,
+        ///         "classroomId": 3,
+        ///         "day": "Tuesday",
+        ///         "startTime": "2020-03-03T07:04:04.540Z",
+        ///         "endTime": "2020-03-03T07:04:04.540Z"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A classSchedule id</param>
@@ -121,6 +129,13 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/classSchedules
+        ///     {
+        ///         "courseId": 3,
+        ///         "classroomId": 3,
+        ///         "day": "Tuesday",
+        ///         "startTime": "2020-03-03T07:04:04.540Z",
+        ///         "endTime": "2020-03-03T07:04:04.540Z"
+        ///     }
         ///
         /// </remarks>
         /// <param name="classSchedules">A classSchedule entity</param>

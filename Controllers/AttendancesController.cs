@@ -73,7 +73,15 @@ namespace LectureSystem.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     Put /api/attendances/1
+        ///     Put /api/attendances/3
+        ///     {
+        ///         "attendanceId": 3,
+        ///         "classScheduleId": 1,
+        ///         "lecturerId": 1,
+        ///         "studentId": 6,
+        ///         "isAttend": false,
+        ///         "reason": "sick"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A attendance id</param>
@@ -121,6 +129,13 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/attendances
+        ///     {
+        ///         "classScheduleId": 1,
+        ///         "lecturerId": 1,
+        ///         "studentId": 6,
+        ///         "isAttend": false,
+        ///         "reason": "sick"
+        ///     }
         ///
         /// </remarks>
         /// <param name="attendances">A attendance entity</param>

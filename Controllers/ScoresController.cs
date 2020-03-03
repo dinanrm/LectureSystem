@@ -74,6 +74,12 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/scores/1
+        ///     {
+        ///         "scoreId": 1,
+        ///         "minScore": 85,
+        ///         "alphabet": "A",
+        ///         "description": "4.00"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A score id</param>
@@ -121,6 +127,11 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/scores
+        ///     {
+        ///         "minScore": 85,
+        ///         "alphabet": "A",
+        ///         "description": "4.00"
+        ///     }
         ///
         /// </remarks>
         /// <param name="scores">A score entity</param>

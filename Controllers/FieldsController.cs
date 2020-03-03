@@ -74,6 +74,11 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/fields/1
+        ///     {
+        ///         "fieldId": 1,
+        ///         "courseId": 1,
+        ///         "lecturerId": 1
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A field id</param>
@@ -121,6 +126,10 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/fields
+        ///     {
+        ///         "courseId": 1,
+        ///         "lecturerId": 1
+        ///     }
         ///
         /// </remarks>
         /// <param name="fields">A field entity</param>

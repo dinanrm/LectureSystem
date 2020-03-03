@@ -99,6 +99,15 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/lecturers/1
+        ///     {
+        ///         "lecturerId": 1,
+        ///         "name": "Ade Chandra",
+        ///         "birthdate": "1973-03-03",
+        ///         "phoneNumber": "0987654321",
+        ///         "address": "Bandung",
+        ///         "email": "adechandra@gmail.com",
+        ///         "password": "adePass"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A lecturer id</param>
@@ -117,14 +126,7 @@ namespace LectureSystem.Controllers
                 return BadRequest();
             }
 
-            var result = await _context.Lecturers
-                .Where(l => l.Email == lecturers.Email)
-                .FirstOrDefaultAsync();
-
-            if (result != null)
-            {
-                return Conflict("Email has been used");
-            }
+            var result = await _context.Lecturers.FindAsync(id);
 
             result.Name = lecturers.Name;
             result.Birthdate = lecturers.Birthdate;
@@ -160,6 +162,14 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/lecturers
+        ///     {
+        ///         "name": "Ade Chandra",
+        ///         "birthdate": "1973-03-03",
+        ///         "phoneNumber": "0987654321",
+        ///         "address": "Bandung",
+        ///         "email": "adechandra@gmail.com",
+        ///         "password": "adePass"
+        ///     }
         ///
         /// </remarks>
         /// <param name="lecturers">A lecturer entity</param>
@@ -195,6 +205,10 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/lecturers/login
+        ///     {
+        ///         "email": "adechandra@gmail.com",
+        ///         "password": "adePass"
+        ///     }
         ///
         /// </remarks>
         /// <param name="lecturers">A lecturer entity</param>

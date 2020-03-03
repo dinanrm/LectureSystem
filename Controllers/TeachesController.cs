@@ -74,6 +74,11 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/teaches/1
+        ///     {
+        ///         "teachId": 1,
+        ///         "classScheduleId": 3,
+        ///         "lecturerId": 1
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A teach id</param>
@@ -121,6 +126,10 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/teaches
+        ///     {
+        ///         "classScheduleId": 3,
+        ///         "lecturerId": 1
+        ///     }
         ///
         /// </remarks>
         /// <param name="teaches">A teach entity</param>

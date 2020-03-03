@@ -292,6 +292,9 @@ namespace LectureSystem.Controllers
                 return NotFound();
             }
 
+            var filePath = Path.Combine(he.WebRootPath, "files", files.Name);
+            System.IO.File.Delete(filePath);
+
             _context.Files.Remove(files);
             await _context.SaveChangesAsync();
 

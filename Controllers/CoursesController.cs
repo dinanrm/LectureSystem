@@ -74,6 +74,13 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/courses/1
+        ///     {
+        ///         "courseId" : "1",
+        ///         "name": "Manajemen Proyek",
+        ///         "description": "Mata kuliah yang mempelajari tentang bagaimana melakukan manajemen proyek yang baik dan benar",
+        ///         "semesterCreditUnit": 2,
+        ///         "curriculum": "2015"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A course id</param>
@@ -121,6 +128,12 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/courses
+        ///     { 
+        ///         "name": "Manajemen Proyek",
+        ///         "description": "Mata kuliah yang mempelajari tentang bagaimana melakukan manajemen proyek yang baik dan benar",
+        ///         "semesterCreditUnit": 2,
+        ///         "curriculum": "2015"
+        ///     }
         ///
         /// </remarks>
         /// <param name="courses">A course entity</param>

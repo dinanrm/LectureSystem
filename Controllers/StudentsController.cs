@@ -100,6 +100,16 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/students/1
+        ///     {
+        ///         "studentId": "6",
+        ///         "name": "Chris Martin",
+        ///         "birthdate": "1977-03-02",
+        ///         "phoneNumber": "0987654321",
+        ///         "address": "United Kingdom",
+        ///         "email": "coldplay@gmail.com",
+        ///         "password": "coldplayPass"
+        ///     }
+        ///     
         ///
         /// </remarks>
         /// <param name="id">A student id</param>
@@ -154,6 +164,14 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/students
+        ///     {
+        ///         "name": "Chris Martin",
+        ///         "birthdate": "1977-03-02",
+        ///         "phoneNumber": "0987654321",
+        ///         "address": "United Kingdom",
+        ///         "email": "coldplay@gmail.com",
+        ///         "password": "coldplayPass"
+        ///     }
         ///
         /// </remarks>
         /// <param name="students">A student entity</param>
@@ -189,6 +207,10 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/students/login
+        ///     {
+        ///         "Email" : "dinan@gmail.com",
+        ///         "Password" : "myPass"
+        ///     }
         ///
         /// </remarks>
         /// <param name="students">A student entity</param>

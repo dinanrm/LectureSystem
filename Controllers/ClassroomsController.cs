@@ -74,6 +74,11 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/classrooms/1
+        ///     {
+        ///         "classroomId" : 1,
+        ///         "name": "A1",
+        ///         "description": "First classroom"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A classroom id</param>
@@ -121,6 +126,10 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/classrooms
+        ///     {
+        ///         "name": "A1",
+        ///         "description": "First classroom"
+        ///     }
         ///
         /// </remarks>
         /// <param name="classrooms">A classroom entity</param>

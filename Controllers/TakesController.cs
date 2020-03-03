@@ -74,6 +74,13 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Put /api/takes/1
+        ///     {
+        ///         "takeId: 1,
+        ///         "studentId": 1,
+        ///         "semesterId": 1,
+        ///         "courseId": 1,
+        ///         "academicYear": "2015-2016"
+        ///     }
         ///
         /// </remarks>
         /// <param name="id">A take id</param>
@@ -121,6 +128,12 @@ namespace LectureSystem.Controllers
         /// Sample request:
         ///
         ///     Post /api/takes
+        ///     {
+        ///         "studentId": 1,
+        ///         "semesterId": 1,
+        ///         "courseId": 1,
+        ///         "academicYear": "2015-2016"
+        ///     }
         ///
         /// </remarks>
         /// <param name="takes">A take entity</param>
