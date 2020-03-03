@@ -23,8 +23,11 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
+        [JsonIgnore]
         public virtual Courses Course { get; set; }
+        [JsonIgnore]
         public virtual Semesters Semester { get; set; }
+        [JsonIgnore]
         public virtual Students Student { get; set; }
 
         [JsonIgnore]
