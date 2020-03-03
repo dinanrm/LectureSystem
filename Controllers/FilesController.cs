@@ -154,7 +154,7 @@ namespace LectureSystem.Controllers
         /// <param name="id">A file id</param>
         /// <response code="200">Returns the file.</response>
         /// <response code="404">If the id of file entity is not exist</response>
-        [ProducesResponseType(201)]
+        [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpGet("Download/{id}")]
         public async Task<ActionResult<Files>> Download(int id)
