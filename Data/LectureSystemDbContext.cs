@@ -84,8 +84,6 @@ namespace LectureSystem.Data
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Date).HasColumnType("date");
-
                 entity.Property(e => e.Day)
                     .HasMaxLength(50)
                     .IsUnicode(false);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace LectureSystem.Models
@@ -19,14 +20,15 @@ namespace LectureSystem.Models
         public int CourseId { get; set; }
         public int ClassroomId { get; set; }
         public string Day { get; set; }
-        public DateTime? Date { get; set; }
-        public TimeSpan? StartTime { get; set; }
-        public TimeSpan? EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public bool? Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
+        [JsonIgnore]
         public virtual Classrooms Classroom { get; set; }
+        [JsonIgnore]
         public virtual Courses Course { get; set; }
 
         [JsonIgnore]
