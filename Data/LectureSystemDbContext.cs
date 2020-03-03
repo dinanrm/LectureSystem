@@ -285,7 +285,7 @@ namespace LectureSystem.Data
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Uuid)
+                entity.Property(e => e.UUID)
                     .HasColumnName("UUID")
                     .HasMaxLength(50)
                     .IsUnicode(false);

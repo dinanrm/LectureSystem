@@ -19,9 +19,7 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
-        [JsonIgnore]
         public virtual ClassSchedules ClassSchedule { get; set; }
-        [JsonIgnore]
         public virtual Lecturers Lecturer { get; set; }
     }
 }

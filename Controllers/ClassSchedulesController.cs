@@ -56,7 +56,13 @@ namespace LectureSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ClassSchedules>> GetClassSchedules(int id)
         {
-            var classSchedules = await _context.ClassSchedules.FindAsync(id);
+            var classSchedules = await _context.ClassSchedules
+                .Where(cs => cs.ClassScheduleId == id)
+                .Include(x => x.Classroom)
+                .Include(x => x.Course)
+                .Include(x => x.Attendances)
+                .Include(x => x.Teaches)
+                .FirstOrDefaultAsync();
 
             if (classSchedules == null)
             {
@@ -170,7 +176,14 @@ namespace LectureSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ClassSchedules>> DeleteClassSchedules(int id)
         {
-            var classSchedules = await _context.ClassSchedules.FindAsync(id);
+            var classSchedules = await _context.ClassSchedules
+                .Where(cs => cs.ClassScheduleId == id)
+                .Include(x => x.Classroom)
+                .Include(x => x.Course)
+                .Include(x => x.Attendances)
+                .Include(x => x.Teaches)
+                .FirstOrDefaultAsync();
+
             if (classSchedules == null)
             {
                 return NotFound();

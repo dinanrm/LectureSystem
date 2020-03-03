@@ -62,7 +62,10 @@ namespace LectureSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Files>> GetFiles(int id)
         {
-            var files = await _context.Files.FindAsync(id);
+            var files = await _context.Files
+                .Where(f => f.FileId == id)
+                .Include(x => x.Course)
+                .FirstOrDefaultAsync();
 
             if (files == null)
             {
@@ -286,7 +289,11 @@ namespace LectureSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Files>> DeleteFiles(int id)
         {
-            var files = await _context.Files.FindAsync(id);
+            var files = await _context.Files
+                .Where(f => f.FileId == id)
+                .Include(x => x.Course)
+                .FirstOrDefaultAsync();
+
             if (files == null)
             {
                 return NotFound();

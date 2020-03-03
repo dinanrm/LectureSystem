@@ -52,7 +52,10 @@ namespace LectureSystem
                 c.IncludeXmlComments(xmlPath);
             });
             services.AddRazorPages();
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddDbContext<LectureSystemDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Azure")));
             

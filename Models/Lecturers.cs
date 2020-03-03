@@ -11,13 +11,15 @@ namespace LectureSystem.Models
             Attendances = new HashSet<Attendances>();
             Fields = new HashSet<Fields>();
             Teaches = new HashSet<Teaches>();
+
+            UUID = Guid.NewGuid().ToString();
             Status = true;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
 
         public int LecturerId { get; set; }
-        public string Uuid { get; set; }
+        public string UUID { get; set; }
         public string Name { get; set; }
         public DateTime? Birthdate { get; set; }
         public string PhoneNumber { get; set; }
@@ -29,11 +31,8 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
-        [JsonIgnore]
         public virtual ICollection<Attendances> Attendances { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Fields> Fields { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Teaches> Teaches { get; set; }
     }
 }

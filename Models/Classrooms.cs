@@ -21,7 +21,6 @@ namespace LectureSystem.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
-        [JsonIgnore]
         public virtual ICollection<ClassSchedules> ClassSchedules { get; set; }
     }
 }

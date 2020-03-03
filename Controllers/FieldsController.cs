@@ -56,7 +56,11 @@ namespace LectureSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Fields>> GetFields(int id)
         {
-            var fields = await _context.Fields.FindAsync(id);
+            var fields = await _context.Fields
+                .Where(f => f.FieldId == id)
+                .Include(x => x.Course)
+                .Include(x => x.Lecturer)
+                .FirstOrDefaultAsync();
 
             if (fields == null)
             {
@@ -164,7 +168,12 @@ namespace LectureSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Fields>> DeleteFields(int id)
         {
-            var fields = await _context.Fields.FindAsync(id);
+            var fields = await _context.Fields
+                .Where(f => f.FieldId == id)
+                .Include(x => x.Course)
+                .Include(x => x.Lecturer)
+                .FirstOrDefaultAsync();
+
             if (fields == null)
             {
                 return NotFound();

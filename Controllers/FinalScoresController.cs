@@ -56,7 +56,11 @@ namespace LectureSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FinalScores>> GetFinalScores(int id)
         {
-            var finalScores = await _context.FinalScores.FindAsync(id);
+            var finalScores = await _context.FinalScores
+                .Where(fs => fs.FinalScoreId == id)
+                .Include(x => x.Student)
+                .Include(x => x.Semester)
+                .FirstOrDefaultAsync();
 
             if (finalScores == null)
             {
@@ -155,7 +159,12 @@ namespace LectureSystem.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<FinalScores>> DeleteFinalScores(int id)
         {
-            var finalScores = await _context.FinalScores.FindAsync(id);
+            var finalScores = await _context.FinalScores
+                .Where(fs => fs.FinalScoreId == id)
+                .Include(x => x.Student)
+                .Include(x => x.Semester)
+                .FirstOrDefaultAsync();
+
             if (finalScores == null)
             {
                 return NotFound();

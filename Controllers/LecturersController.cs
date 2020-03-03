@@ -67,19 +67,21 @@ namespace LectureSystem.Controllers
         public async Task<ActionResult<Lecturers>> GetLecturers(int id)
         {
             var lecturer = await _context.Lecturers
-                .Where(x => x.LecturerId == id)
-                .Select(s => new
+                .Where(l => l.LecturerId == id)
+                .Include(x => x.Fields)
+                .Select(l => new
                 {
-                    s.LecturerId,
-                    s.Name,
-                    s.Birthdate,
-                    s.PhoneNumber,
-                    s.Address,
-                    s.Email,
-                    s.LastLogin,
-                    s.Status,
-                    s.CreatedDate,
-                    s.UpdatedDate
+                    l.LecturerId,
+                    l.Name,
+                    l.Birthdate,
+                    l.PhoneNumber,
+                    l.Address,
+                    l.Email,
+                    l.LastLogin,
+                    l.Status,
+                    l.CreatedDate,
+                    l.UpdatedDate,
+                    l.Fields
                 })
                 .FirstOrDefaultAsync();
 
@@ -302,7 +304,21 @@ namespace LectureSystem.Controllers
             _context.Lecturers.Remove(lecturers);
             await _context.SaveChangesAsync();
 
-            return lecturers;
+            var filtered = new
+            {
+                lecturers.LecturerId,
+                lecturers.Name,
+                lecturers.Birthdate,
+                lecturers.PhoneNumber,
+                lecturers.Address,
+                lecturers.Email,
+                lecturers.LastLogin,
+                lecturers.Status,
+                lecturers.CreatedDate,
+                lecturers.UpdatedDate
+            };
+
+            return Ok(filtered);
         }
 
         private bool LecturersExists(int id)

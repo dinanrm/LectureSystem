@@ -68,7 +68,8 @@ namespace LectureSystem.Controllers
         public async Task<ActionResult<Students>> GetStudents(int id)
         {
             var student = await _context.Students
-                .Where(x => x.StudentId == id)
+                .Where(s => s.StudentId == id)
+                .Include(x => x.Takes)
                 .Select(s => new
                 {
                     s.StudentId,
@@ -80,7 +81,8 @@ namespace LectureSystem.Controllers
                     s.LastLogin,
                     s.Status,
                     s.CreatedDate,
-                    s.UpdatedDate
+                    s.UpdatedDate,
+                    s.Takes
                 })
                 .FirstOrDefaultAsync();
 
@@ -304,7 +306,21 @@ namespace LectureSystem.Controllers
             _context.Students.Remove(students);
             await _context.SaveChangesAsync();
 
-            return students;
+            var filtered = new
+            {
+                students.StudentId,
+                students.Name,
+                students.Birthdate,
+                students.PhoneNumber,
+                students.Address,
+                students.Email,
+                students.LastLogin,
+                students.Status,
+                students.CreatedDate,
+                students.UpdatedDate
+            };
+
+            return Ok(filtered);
         }
 
         private bool StudentsExists(int id)
