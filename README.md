@@ -1,6 +1,8 @@
 # LectureSystem
 Backend application that created to manage lecture activities virtually. Created using ASP .NET Core Web API + Razor Page, the database uses SQL Server and the application is currently hosted on Azure Cloud.
 
+This website is hosted on Azure cloud : https://lecturesystem.azurewebsites.net/
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
