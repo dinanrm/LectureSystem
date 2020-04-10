@@ -32,6 +32,9 @@ namespace LectureSystem.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all of teach entity.</response>
+        /// <response code="401">User is unauthorized</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Teaches>>> GetTeaches()
         {
@@ -50,8 +53,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A teach id</param>
         /// <response code="200">Returns a teach entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of teach entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Teaches>> GetTeaches(int id)
@@ -89,9 +94,11 @@ namespace LectureSystem.Controllers
         /// <param name="teaches">A teach entity</param>
         /// <response code="204">Returns updated teach entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of teach entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTeaches(int id, Teaches teaches)
@@ -139,8 +146,10 @@ namespace LectureSystem.Controllers
         /// <param name="teaches">A teach entity</param>
         /// <response code="201">Returns the created teach entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [HttpPost]
         public async Task<ActionResult<Teaches>> PostTeaches(Teaches teaches)
         {
@@ -162,8 +171,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A teach id</param>
         /// <response code="200">Returns deleted teach entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of teach entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Teaches>> DeleteTeaches(int id)

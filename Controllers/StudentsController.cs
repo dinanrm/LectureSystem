@@ -38,6 +38,9 @@ namespace LectureSystem.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all of student entity.</response>
+        /// <response code="401">User is unauthorized</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Students>>> GetStudents()
         {
@@ -66,8 +69,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A student id</param>
         /// <response code="200">Returns a student entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of student entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Students>> GetStudents(int id)
@@ -123,9 +128,11 @@ namespace LectureSystem.Controllers
         /// <param name="students">A student entity</param>
         /// <response code="204">Returns updated student entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of student entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStudents(int id, Students students)
@@ -184,8 +191,10 @@ namespace LectureSystem.Controllers
         /// <param name="students">A student entity</param>
         /// <response code="201">Returns the created student entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [HttpPost]
         public async Task<ActionResult<Students>> PostStudents(Students students)
         {
@@ -206,25 +215,6 @@ namespace LectureSystem.Controllers
             return CreatedAtAction("GetStudents", new { id = students.StudentId }, students);
         }
 
-        // GET: api/Students/Logout
-        /// <summary>
-        /// Logout as a student
-        /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     Post /api/students/logout
-        ///
-        /// </remarks>
-        /// <param name="returnUrl">A url to redirect to</param>
-        [HttpGet("Logout")]
-        public async Task<IActionResult> Logout([FromQuery] string returnUrl)
-        {
-            await HttpContext.SignOutAsync();
-
-            return Redirect(returnUrl);
-        }
-
         // DELETE: api/Students/5
         /// <summary>
         /// Delete a student by id
@@ -237,8 +227,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A student id</param>
         /// <response code="200">Returns deleted student entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of student entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Students>> DeleteStudents(int id)

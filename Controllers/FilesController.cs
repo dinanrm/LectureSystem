@@ -39,6 +39,9 @@ namespace LectureSystem.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all of file entity.</response>
+        /// <response code="401">User is unauthorized</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Files>>> GetFiles()
         {
@@ -57,8 +60,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A file id</param>
         /// <response code="200">Returns a file entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of file entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Files>> GetFiles(int id)
@@ -92,8 +97,10 @@ namespace LectureSystem.Controllers
         /// <param name="Author">The author of file</param>
         /// <response code="201">Returns the created file entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [HttpPost("Upload")]
         public async Task<IActionResult> Upload(List<IFormFile> files, [FromForm] int? CourseId, [FromForm] string Description, [FromForm] string Author )
         {
@@ -157,8 +164,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A file id</param>
         /// <response code="200">Returns the file.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of file entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("Download/{id}")]
         public async Task<ActionResult<Files>> Download(int id)
@@ -205,9 +214,11 @@ namespace LectureSystem.Controllers
         /// <param name="Author">The author of file</param>
         /// <response code="204">Returns updated file entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of file entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, List<IFormFile> files, [FromForm] int fileId, [FromForm] int? CourseId, [FromForm] string Description, [FromForm] string Author)
@@ -284,8 +295,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A file id</param>
         /// <response code="200">Returns deleted file entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of file entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Files>> DeleteFiles(int id)

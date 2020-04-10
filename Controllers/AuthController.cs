@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LectureSystem.Utilities;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication;
 
 namespace LectureSystem.Controllers
 {
@@ -43,7 +44,7 @@ namespace LectureSystem.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [HttpPost("Lecturers")]
+        [HttpPost("Login/Lecturers")]
         public async Task<ActionResult<Lecturers>> Lecturers(Lecturers lecturers)
         {
             var result = await _context.Lecturers.FirstOrDefaultAsync(l => l.Email == lecturers.Email);
@@ -81,6 +82,26 @@ namespace LectureSystem.Controllers
             return Ok(filtered);
         }
 
+        // GET: api/lecturers/Logout
+        /// <summary>
+        /// Logout as a lecturer
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/lecturers/logout
+        ///
+        /// </remarks>
+        /// <param name="returnUrl">A url to redirect to</param>
+        [HttpGet("Logout/Lecturers")]
+        public async Task<IActionResult> Lecturers([FromQuery] string returnUrl)
+        {
+            await HttpContext.SignOutAsync();
+
+            return Redirect(returnUrl);
+        }
+
+
         // POST: api/Students/Login
         /// <summary>
         /// Login as a student
@@ -102,7 +123,7 @@ namespace LectureSystem.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [HttpPost("Students")]
+        [HttpPost("Login/Students")]
         public async Task<ActionResult<Students>> Students(Students students)
         {
             var result = await _context.Students.FirstOrDefaultAsync(u => u.Email == students.Email);
@@ -139,6 +160,25 @@ namespace LectureSystem.Controllers
             };
 
             return Ok(filtered);
+        }
+
+        // GET: api/Students/Logout
+        /// <summary>
+        /// Logout as a student
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     Post /api/students/logout
+        ///
+        /// </remarks>
+        /// <param name="returnUrl">A url to redirect to</param>
+        [HttpGet("Logout/Students")]
+        public async Task<IActionResult> Logout([FromQuery] string returnUrl)
+        {
+            await HttpContext.SignOutAsync();
+
+            return Redirect(returnUrl);
         }
     }
 }

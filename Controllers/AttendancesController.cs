@@ -32,6 +32,9 @@ namespace LectureSystem.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all of attendance entity.</response>
+        /// <response code="401">User is unauthorized</response>
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Attendances>>> GetAttendances()
         {
@@ -50,8 +53,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A attendance id</param>
         /// <response code="200">Returns a attendance entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of attendance entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<ActionResult<Attendances>> GetAttendances(int id)
@@ -93,9 +98,11 @@ namespace LectureSystem.Controllers
         /// <param name="attendances">A attendance entity</param>
         /// <response code="204">Returns updated attendance entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of attendance entity is not exist</response>
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAttendances(int id, Attendances attendances)
@@ -146,8 +153,10 @@ namespace LectureSystem.Controllers
         /// <param name="attendances">A attendance entity</param>
         /// <response code="201">Returns the created attendance entity.</response>
         /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
+        /// <response code="401">User is unauthorized</response>
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [HttpPost]
         public async Task<ActionResult<Attendances>> PostAttendances(Attendances attendances)
         {
@@ -169,8 +178,10 @@ namespace LectureSystem.Controllers
         /// </remarks>
         /// <param name="id">A attendance id</param>
         /// <response code="200">Returns deleted attendance entity.</response>
+        /// <response code="401">User is unauthorized</response>
         /// <response code="404">If the id of attendance entity is not exist</response>
         [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Attendances>> DeleteAttendances(int id)
