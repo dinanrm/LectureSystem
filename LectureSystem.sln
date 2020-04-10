@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LectureSystem", "LectureSystem.csproj", "{28C43D94-3809-42A2-A166-8AB3A3D426A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LectureSystem", "LectureSystem.csproj", "{28C43D94-3809-42A2-A166-8AB3A3D426A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sky-dental-be", "..\..\..\Work\sky-dental-be\sky-dental-be\sky-dental-be.csproj", "{D44A81DB-F39E-4013-8EBF-35D27A71CFD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{28C43D94-3809-42A2-A166-8AB3A3D426A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C43D94-3809-42A2-A166-8AB3A3D426A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C43D94-3809-42A2-A166-8AB3A3D426A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44A81DB-F39E-4013-8EBF-35D27A71CFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44A81DB-F39E-4013-8EBF-35D27A71CFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44A81DB-F39E-4013-8EBF-35D27A71CFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44A81DB-F39E-4013-8EBF-35D27A71CFD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

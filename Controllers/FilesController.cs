@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LectureSystem.Data;
 using LectureSystem.Models;
-
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LectureSystem.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FilesController : ControllerBase

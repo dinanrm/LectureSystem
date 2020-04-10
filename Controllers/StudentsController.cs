@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -8,18 +7,24 @@ using Microsoft.EntityFrameworkCore;
 using LectureSystem.Data;
 using LectureSystem.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
+using LectureSystem.Utilities;
 
 namespace LectureSystem.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentsController : ControllerBase
     {
         private readonly LectureSystemDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public StudentsController(LectureSystemDbContext context)
+        public StudentsController(LectureSystemDbContext context, IConfiguration config)
         {
             _context = context;
+            _configuration = config;
         }
 
         // GET: api/Students
@@ -137,7 +142,7 @@ namespace LectureSystem.Controllers
             result.PhoneNumber = students.PhoneNumber;
             result.Address = students.Address;
             result.Email = students.Email;
-            result.Password = EncryptPassword(students.Password);
+            result.Password = AuthHelper.EncryptPassword(students.Password);
 
             try
             {
@@ -193,71 +198,12 @@ namespace LectureSystem.Controllers
                 return Conflict("Email has been used");
             }
 
-            students.Password = EncryptPassword(students.Password);
+            students.Password = AuthHelper.EncryptPassword(students.Password);
 
             _context.Students.Add(students);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetStudents", new { id = students.StudentId }, students);
-        }
-
-        // POST: api/Students/Login
-        /// <summary>
-        /// Login as a student
-        /// </summary>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     Post /api/students/login
-        ///     {
-        ///         "Email" : "dinan@gmail.com",
-        ///         "Password" : "myPass"
-        ///     }
-        ///
-        /// </remarks>
-        /// <param name="students">A student entity</param>
-        /// <response code="201">Returns the created student entity.</response>
-        /// <response code="400">The request could not be understood by the server due to malformed syntax</response>
-        /// <response code="401">Email or Password is incorrect</response>
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [HttpPost("Login")]
-        public async Task<ActionResult<Students>> Login(Students students)
-        {
-            var result = await _context.Students.FirstOrDefaultAsync(u => u.Email == students.Email);
-
-            if (result == null)
-            {
-                return Unauthorized("The email or password is incorrect");
-            }
-
-            var validationStatus = VerifyPassword(students.Password, result.Password);
-
-            if (!validationStatus)
-            {
-                return Unauthorized("The email or password is incorrect");
-            }
-
-            result.LastLogin = DateTime.Now;
-            result.Status = true;
-            await _context.SaveChangesAsync();
-
-            var filtered = new
-            {
-                result.StudentId,
-                result.Name,
-                result.Birthdate,
-                result.PhoneNumber,
-                result.Address,
-                result.Email,
-                result.LastLogin,
-                result.Status,
-                result.CreatedDate,
-                result.UpdatedDate
-            };
-
-            return Ok(filtered);
         }
 
         // GET: api/Students/Logout
@@ -326,16 +272,6 @@ namespace LectureSystem.Controllers
         private bool StudentsExists(int id)
         {
             return _context.Students.Any(e => e.StudentId == id);
-        }
-
-        protected string EncryptPassword(string password)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(password);
-        }
-
-        protected bool VerifyPassword(string enteredPassword, string hashedPassword)
-        {
-            return BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
         }
     }
 }
