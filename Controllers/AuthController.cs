@@ -76,7 +76,8 @@ namespace LectureSystem.Controllers
                 result.LastLogin,
                 result.Status,
                 result.CreatedDate,
-                result.UpdatedDate
+                result.UpdatedDate,
+                token = AuthHelper.GenerateJwtToken(result.LecturerId, _configuration["SecurityKey"]),
             };
 
             return Ok(filtered);
